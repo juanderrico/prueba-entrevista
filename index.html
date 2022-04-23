@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title></title>
     <style>
+    body{
+      font-family: Arial;
+    }
       .header{
         width:99%;
         background-color: salmon;
@@ -25,12 +28,7 @@
         align-items: center;
         margin:10px;
       }
-      .sidebar{
-        background-color: silver;
-         width:30%;
-         height:700px;
 
-      }
       .content{
         background-color: grey;
          width:70%;
@@ -39,23 +37,35 @@
       }
       .linea{
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
         height:40px;
+      }
+      .datos{
+        padding-left: 10px;
+
       }
       .eliminar-boton{
         background-color: grey;
         border: 0;
         padding-top:10px;
-        justify-self: flex-end;
+        padding-top: 0;
+        padding-right: 5px;
       }
       .eliminar-imagen{
 
         width:20px;
         height:20px;
+
       }
       .editar-boton{
         padding-top:10px;
         background-color: grey;
         border: 0;
+        padding-top: 0;
+        padding-right: 5px;
       }
       .editar-imagen{
         width:20px;
@@ -66,6 +76,34 @@
          width:99%;
          height:75px;
          margin: 10px;
+      }
+      .sidebar{
+        background-color: silver;
+         width:30%;
+         height:700px;
+
+      }
+      form{
+        margin: 10px;
+      }
+      .input-text{
+        border-radius: 8px;
+        background-color: #EBE6C6;
+        margin-top:5px;
+        border: none;
+        margin-bottom:5px;
+      }
+      .input-number{
+        border-radius: 8px;
+        background-color: #EBE6C6;
+        margin-top:5px;
+        border: none;
+      }
+      .input-button{
+        margin-top: 10px;
+        background-color: #EBE6C6;
+        border-radius:8px;
+        border: none;
       }
       </style>
 
@@ -81,14 +119,15 @@
     <div class="content-bar-holder">
       <div class="content">
         <div class="linea">
-          <p>
+          <p class="datos" id="datos"></p>
+          <div>
           <button id="boton-editar" class="editar-boton">
               <img src="editar-icono.png" alt="boton editar" class="editar-imagen">
         <button id="boton-eliminar" class="eliminar-boton">
           <img src="eliminar-icono.png" alt="boton eliminar" class="eliminar-imagen">
         </button>
 
-          </button>
+      </button></div>
       </div>
     </div>
       <div class="sidebar">
