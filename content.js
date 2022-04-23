@@ -11,8 +11,7 @@ boton.addEventListener('click',crearPerfil);
 var baseDeDatos=[];
 
   function crearPerfil(){
-    var nombre=document.getElementById("input-nombre");
-    var documento = document.getElementById("input-dni");
-    var dni= parseInt(documento.value);
+    var nombre=document.getElementById("input-nombre").value;
+    var dni = document.getElementById("input-dni").value;
       baseDeDatos.push(new Persona(nombre,dni));
   }

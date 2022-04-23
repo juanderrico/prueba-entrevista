@@ -37,6 +37,30 @@
          height:700px;
          margin-right: 10px;
       }
+      .linea{
+        display: flex;
+        height:40px;
+      }
+      .eliminar-boton{
+        background-color: grey;
+        border: 0;
+        padding-top:10px;
+        justify-self: flex-end;
+      }
+      .eliminar-imagen{
+
+        width:20px;
+        height:20px;
+      }
+      .editar-boton{
+        padding-top:10px;
+        background-color: grey;
+        border: 0;
+      }
+      .editar-imagen{
+        width:20px;
+        height:20px;
+      }
       .footer{
         background-color: salmon;
          width:99%;
@@ -56,8 +80,17 @@
     </nav>
     <div class="content-bar-holder">
       <div class="content">
+        <div class="linea">
+          <p>
+          <button id="boton-editar" class="editar-boton">
+              <img src="editar-icono.png" alt="boton editar" class="editar-imagen">
+        <button id="boton-eliminar" class="eliminar-boton">
+          <img src="eliminar-icono.png" alt="boton eliminar" class="eliminar-imagen">
+        </button>
 
+          </button>
       </div>
+    </div>
       <div class="sidebar">
         <form>
           <label for="input-nombre">Nombre</label>
