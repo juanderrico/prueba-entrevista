@@ -22,14 +22,18 @@ baseDeDatos.push(new Persona("Juan", 40140041))
 function eliminarPerfil(index){
 
   var holder=document.getElementById("holder");
-  var linea=document.getElementById("linea"+inde);
+  var linea=document.getElementById("linea"+index);
   baseDeDatos.splice(index);
   holder.removeChild(linea);
 
 }
+function editarPerfil(index){
+  eliminarPerfil(index)
+  crearPerfil()
+}
 
 function crearLinea(datos){
-  var index= parseInt(baseDeDatos.indexOf(datos));
+  var index= baseDeDatos.indexOf(datos);
 
   var holder=document.getElementById("holder");
   var div1= document.createElement("div");
@@ -65,10 +69,18 @@ function crearLinea(datos){
   imagenEliminar.src="eliminar-icono.png";
 
 parrafo.innerText="Nombre: "+datos.nombre+"--------- DNI: "+datos.dni
+
 var eliminar= document.getElementsByClassName('eliminar-boton');
-for(var i=0;i<eliminar.length;i++){
-eliminar[i].addEventListener('click',function(){eliminarPerfil(index)})}
+
+eliminar[index].addEventListener('click',function(){eliminarPerfil(index)})
+
+var editar= document.getElementsByClassName('editar-boton');
+
+editar[index].addEventListener('click',function(){editarPerfil(index)})
+
+
 }
+
 function cargarDatos(){
   for(var i=0;i<baseDeDatos.length;i++){
     var p= "linea" + i;
