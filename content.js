@@ -23,17 +23,64 @@ function eliminarPerfil(index){
 
   var holder=document.getElementById("holder");
   var linea=document.getElementById("linea"+index);
-  baseDeDatos.splice(index);
+  baseDeDatos.splice(index,1);
   holder.removeChild(linea);
 
 }
 function editarPerfil(index){
+
+
+
+
   var linea=document.getElementById("linea"+index);
   var parrafo= linea.firstChild;
-  var nombre=document.getElementById("input-nombre").value;
-  var dni = document.getElementById("input-dni").value;
-  parrafo.innerText="Nombre: "+nombre+"--------- DNI: "+dni
+
+  parrafo.innerText= "Nombre:"
+  var inputNombre= document.createElement("input");
+  inputNombre.setAttribute("type","text")
+  inputNombre.setAttribute("id","editar-nombre");
+  parrafo.appendChild(inputNombre);
+
+  var div= document.createElement("div");
+  parrafo.appendChild(div);
+  div.setAttribute("id","div-editar")
+  div.innerText="DNI:"
+
+  var inputDni= document.createElement("input");
+  inputDni.setAttribute("type","number");
+  inputDni.setAttribute("id","editar-dni");
+  div.appendChild(inputDni);
+
+  var done= document.createElement("input")
+inputDni.setAttribute("type","number");
+  done.setAttribute("Class","input-button");
+  done.setAttribute("id","done-button");
+  done.setAttribute("Value","Hecho");
+  div.appendChild(done);
+  done.addEventListener("click",function(){modificarPerfil(index)})
+
+inputNombre.setAttribute("Class","edit-inputs");
+inputDni.setAttribute("Class","edit-inputs");
+
 }
+
+
+function modificarPerfil(index){
+  var nombre=document.getElementById("editar-nombre")
+  var dni=document.getElementById("editar-dni")
+  var linea=document.getElementById("linea"+index);
+  var parrafo=linea.firstChild;
+  var div=document.getElementById("div-editar")
+  parrafo.removeChild(div);
+  parrafo.removeChild(nombre);
+  baseDeDatos.splice(index,1,new Persona(nombre.value,dni.value));
+parrafo.innerText="Nombre: "+nombre.value+"--------- DNI: "+dni.value
+
+}
+
+
+
+
 
 function crearLinea(datos){
   var index= baseDeDatos.indexOf(datos);
@@ -48,6 +95,7 @@ function crearLinea(datos){
   var parrafo=document.createElement("p");
   parrafo.classList.add("datos")
   div1.appendChild(parrafo);
+  parrafo.setAttribute("id","datos");
 
   var div2= document.createElement("div");
   div1.appendChild(div2);
@@ -86,7 +134,7 @@ editar[index].addEventListener('click',function(){editarPerfil(index)})
 
 function cargarDatos(){
   for(var i=0;i<baseDeDatos.length;i++){
-    var p= "linea" + i;
+
     crearLinea(baseDeDatos[i]);
   }
 }
