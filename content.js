@@ -14,15 +14,29 @@ baseDeDatos.push(new Persona("Juan", 40140041))
     var nombre=document.getElementById("input-nombre").value;
     var dni = document.getElementById("input-dni").value;
       baseDeDatos.push(new Persona(nombre,dni));
+
       crearLinea(baseDeDatos[baseDeDatos.length-1]);
 
   }
 
+function eliminarPerfil(inde){
+
+  var holder=document.getElementById("holder");
+  var linea=document.getElementById("linea"+inde);
+  baseDeDatos.splice(inde);
+  holder.removeChild(linea);
+
+}
+
 function crearLinea(datos){
+  var index= parseInt(baseDeDatos.indexOf(datos));
+
   var holder=document.getElementById("holder");
   var div1= document.createElement("div");
   holder.appendChild(div1);
   div1.classList.add("linea")
+  div1.setAttribute("id","linea"+ index);
+
 
   var parrafo=document.createElement("p");
   parrafo.classList.add("datos")
@@ -51,9 +65,13 @@ function crearLinea(datos){
   imagenEliminar.src="eliminar-icono.png";
 
 parrafo.innerText="Nombre: "+datos.nombre+"--------- DNI: "+datos.dni
+var eliminar= document.getElementsByClassName('eliminar-boton');
+for(var i=0;i<eliminar.length;i++){
+eliminar[i].addEventListener('click',function(){eliminarPerfil(index)})}
 }
 function cargarDatos(){
   for(var i=0;i<baseDeDatos.length;i++){
+    var p= "linea" + i;
     crearLinea(baseDeDatos[i]);
   }
 }
