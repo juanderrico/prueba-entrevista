@@ -19,11 +19,11 @@ baseDeDatos.push(new Persona("Juan", 40140041))
 
   }
 
-function eliminarPerfil(inde){
+function eliminarPerfil(index){
 
   var holder=document.getElementById("holder");
   var linea=document.getElementById("linea"+inde);
-  baseDeDatos.splice(inde);
+  baseDeDatos.splice(index);
   holder.removeChild(linea);
 
 }
