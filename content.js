@@ -28,8 +28,11 @@ function eliminarPerfil(index){
 
 }
 function editarPerfil(index){
-  eliminarPerfil(index)
-  crearPerfil()
+  var linea=document.getElementById("linea"+index);
+  var parrafo= linea.firstChild;
+  var nombre=document.getElementById("input-nombre").value;
+  var dni = document.getElementById("input-dni").value;
+  parrafo.innerText="Nombre: "+nombre+"--------- DNI: "+dni
 }
 
 function crearLinea(datos){
