@@ -11,20 +11,45 @@ boton.addEventListener('click',crearPerfil);
 var baseDeDatos=[];
 baseDeDatos.push(new Persona("Juan", 40140041))
   function crearPerfil(){
-    var nombre=document.getElementById("input-nombre").value;
-    var dni = document.getElementById("input-dni").value;
-      baseDeDatos.push(new Persona(nombre,dni));
+    var p=document.getElementById("error")
+    p.innerText=""
+    var nombre=document.getElementById("input-nombre");
+    var dni = document.getElementById("input-dni");
 
+    for(nuevoPerfil of baseDeDatos){
+      if(dni.value==nuevoPerfil.dni){
+        return errorEnDni()
+      }
+    else if(dni.value==""){
+      return alert("no se ha ingresado DNI")
+    }}
+
+      baseDeDatos.push(new Persona(nombre.value,dni.value));
       crearLinea(baseDeDatos[baseDeDatos.length-1]);
+      nombre.value=""
+      dni.value=""
 
   }
+function errorEnDni(){
+  var p=document.getElementById("error")
 
-function eliminarPerfil(index){
+  p.innerText="DNI ya ha sido ingresado"
+}
 
+function eliminarPerfil(dni){
+  var index;
+  for(find of baseDeDatos){
+    if(dni==find.dni){
+    index= baseDeDatos.indexOf(find)
+  }}
   var holder=document.getElementById("holder");
   var linea=document.getElementById("linea"+index);
   baseDeDatos.splice(index,1);
   holder.removeChild(linea);
+  for(var i=0;i<baseDeDatos.length;i++){
+    var cambio=document.getElementsByClassName("linea")
+    cambio[i].setAttribute("id","linea"+i)
+  }
 
 }
 function editarPerfil(index){
@@ -123,7 +148,7 @@ parrafo.innerText="Nombre: "+datos.nombre+"--------- DNI: "+datos.dni
 
 var eliminar= document.getElementsByClassName('eliminar-boton');
 
-eliminar[index].addEventListener('click',function(){eliminarPerfil(index)})
+eliminar[index].addEventListener('click',function(){eliminarPerfil(datos.dni)})
 
 var editar= document.getElementsByClassName('editar-boton');
 
