@@ -21,7 +21,7 @@ baseDeDatos.push(new Persona("Juan", 40140041))
         return errorEnDni()
       }
     else if(dni.value==""){
-      return alert("no se ha ingresado DNI")
+      return alert("No se ha ingresado DNI")
     }}
 
       baseDeDatos.push(new Persona(nombre.value,dni.value));
@@ -52,8 +52,12 @@ function eliminarPerfil(dni){
   }
 
 }
-function editarPerfil(index){
-
+function editarPerfil(dni){
+  var index;
+  for(find of baseDeDatos){
+    if(dni==find.dni){
+    index= baseDeDatos.indexOf(find)
+  }}
 
 
 
@@ -64,6 +68,7 @@ function editarPerfil(index){
   var inputNombre= document.createElement("input");
   inputNombre.setAttribute("type","text")
   inputNombre.setAttribute("id","editar-nombre");
+  inputNombre.setAttribute("value",baseDeDatos[index].nombre);
   parrafo.appendChild(inputNombre);
 
   var div= document.createElement("div");
@@ -74,6 +79,7 @@ function editarPerfil(index){
   var inputDni= document.createElement("input");
   inputDni.setAttribute("type","number");
   inputDni.setAttribute("id","editar-dni");
+  inputDni.setAttribute("value",baseDeDatos[index].dni);
   div.appendChild(inputDni);
 
   var done= document.createElement("input")
@@ -132,7 +138,7 @@ function crearLinea(datos){
   var imagenEditar= document.createElement("img");
     imagenEditar.classList.add("editar-imagen")
   botonEditar.appendChild(imagenEditar);
-  imagenEditar.src="editar-icono.png";
+  imagenEditar.src="./editar-icono.png";
 
   var botonEliminar= document.createElement("button");
   botonEliminar.classList.add("eliminar-boton")
@@ -142,7 +148,7 @@ function crearLinea(datos){
   var imagenEliminar= document.createElement("img");
   imagenEliminar.classList.add("eliminar-imagen")
   botonEliminar.appendChild(imagenEliminar)
-  imagenEliminar.src="eliminar-icono.png";
+  imagenEliminar.src="./eliminar-icono.png";
 
 parrafo.innerText="Nombre: "+datos.nombre+"--------- DNI: "+datos.dni
 
@@ -152,7 +158,7 @@ eliminar[index].addEventListener('click',function(){eliminarPerfil(datos.dni)})
 
 var editar= document.getElementsByClassName('editar-boton');
 
-editar[index].addEventListener('click',function(){editarPerfil(index)})
+editar[index].addEventListener('click',function(){editarPerfil(datos.dni)})
 
 
 }
